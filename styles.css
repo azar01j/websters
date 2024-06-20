@@ -1,0 +1,292 @@
+/* Reset default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('grocery-background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 0.5em;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+.tagline {
+    font-size: 1em;
+    color: #555;
+    margin: 0;
+}
+
+.register-box, .login-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-box h2, .login-box h2 {
+    margin-bottom: 1.5em;
+}
+
+.input-group {
+    margin-bottom: 1em;
+    text-align: left;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.links {
+    margin-top: 1em;
+}
+
+.links a {
+    display: block;
+    color: #4CAF50;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #388e3c;
+}
+
+.dashboard-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.header {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #4CAF50;
+    text-align: left;
+    padding-left: 2em;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 1em;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 1em;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    background-color: #388e3c;
+}
+
+.background-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    opacity: 0.6; /* Adjusted for higher transparency */
+}
+
+.main-content {
+    margin: 2em;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1em;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard h2 {
+    margin-bottom: 1em;
+    color: #4CAF50;
+}
+
+#content {
+    text-align: left;
+    margin-top: 1em;
+}
+
+.grocery-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5em 0;
+}
+
+.grocery-item button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.grocery-item button:hover {
+    background-color: #45a049;
+}
+
+.empty-orders {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    margin-top: 2em;
+}
+
+.empty-orders img {
+    width: 50px;
+    height: auto;
+}
+
+h3 {
+    color: #4CAF50;
+    margin-bottom: 1em;
+}
+
+.grocery-item img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.store-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.store-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.store-item h3 {
+    color: #4CAF50;
+    margin-bottom: 0.5em;
+}
+
+.order-history-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.order-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em 0;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.order-item h3 {
+    color: #4CAF50;
+    margin-bottom: 0.5em;
+}
+
+.order-item p {
+    margin: 0.5em 0;
+}
