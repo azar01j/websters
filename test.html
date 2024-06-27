@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Integer Variable</title>
+</head>
+<body>
+    <div id="display"></div>
+
+    <script>
+        // JavaScript code
+        var myInteger = 42;  // Example integer variable
+
+        // Method 1: Using innerHTML
+        document.getElementById("display").innerHTML = myInteger;
+
+        // Method 2: Using textContent
+        // document.getElementById("display").textContent = myInteger;
+
+        // Method 3: Using innerText
+        // document.getElementById("display").innerText = myInteger;
+
+        // Method 4: Using template literals (ES6)
+        // document.getElementById("display").innerHTML = `${myInteger}`;
+
+        // Method 5: Creating and appending elements
+        /*
+        var newElement = document.createElement("p");
+        newElement.textContent = myInteger;
+        document.getElementById("display").appendChild(newElement);
+        */
+    </script>
+</body>
+</html>

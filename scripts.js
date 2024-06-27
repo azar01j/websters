@@ -1,3 +1,7 @@
+const countSpan = document.getElementById('count').value;
+
+console.log(countSpan);
+
 function loginUser() {
     const userId = document.getElementById('user-id').value;
     const password = document.getElementById('password').value;
@@ -97,4 +101,26 @@ setInterval(changeBackgroundImage, 1000);
 document.addEventListener('DOMContentLoaded', () => {
     changeBackgroundImage();
 });
+
+function closeNotification() {
+    document.querySelector('.notification-prompt').style.display = 'none';
+}
+
+function updateCount(value) {
+    value+=1;
+    console.log(value);
+    //document.getElementById("counter").innerHTML = value;
+}
+
+
+function addToCart(item) {
+    updateCount(1);
+
+    alert(item + ' added to cart');
+    
+}
+
+function removeFromCart(item) {
+    alert(item + ' removed from cart');
+}
 

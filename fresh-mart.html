@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Mart - Websters Grocery Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="store-container">
+        <div class="header">
+            <img src="logo.png" alt="Websters Logo" class="logo">
+            <h1>Fresh Mart</h1>
+            <p class="tagline">Grocery on your fingertips</p>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Cart</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>Products</h2>
+            <div class="product-list">
+                <div class="product-item">
+                    <img src="apple.png" alt="Apples">
+                    <h3>Apples</h3>
+                    <p>$3.00 per lb</p>
+                    <button onclick="addToCart('Apples')">Add to Cart</button>
+                    <button onclick="removeFromCart('Apples')">Remove</button>
+                </div>
+                <div class="product-item">
+                    <img src="banana.jpg" alt="Bananas">
+                    <h3>Bananas</h3>
+                    <p>$1.00 per lb</p>
+                    <button onclick="addToCart('Bananas')">Add to Cart</button>
+                    <button onclick="removeFromCart('Bananas')">Remove</button>
+                </div>
+                <div class="product-item">
+                    <img src="carrot.jpg" alt="Carrots">
+                    <h3>Carrots</h3>
+                    <p>$2.00 per lb</p>
+                    <button onclick="addToCart('Carrots')">Add to Cart</button>
+                    <button onclick="removeFromCart('Carrots')">Remove</button>
+                </div>
+                <div class="product-item">
+                    <img src="milk.png" alt="Milk">
+                    <h3>Milk</h3>
+                    <p>$4.00 per gallon</p>
+                    <button onclick="addToCart('Milk')">Add to Cart</button>
+                    <button onclick="removeFromCart('Milk')">Remove</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Section -->
+        <div class="review-container">
+            <h2>Leave a Review</h2>
+            <form id="reviewForm">
+                <div class="stars">
+                    <input type="radio" name="rating" id="star5" value="5"><label for="star5"></label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4"></label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3"></label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2"></label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1"></label>
+                </div>
+                <textarea name="review" id="reviewText" rows="4" placeholder="Write your review here..."></textarea>
+                <br>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Return Button -->
+        <button class="return-button" onclick="processReturn()">Process Return</button>
+
+        <div class="notification-prompt">
+            <p>New offers and discounts available!</p>
+            <button onclick="closeNotification()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for handling review submission
+        document.getElementById('reviewForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const reviewText = document.getElementById('reviewText').value;
+
+            if (rating && reviewText) {
+                alert(`Thank you for your ${rating.value} star review!`);
+                // Here you can send the review data to your backend or perform other actions
+                // For demonstration, just alerting the review data
+                console.log(`Rating: ${rating.value}, Review: ${reviewText}`);
+                // Clear the form
+                document.getElementById('reviewText').value = '';
+                document.querySelector('input[name="rating"]:checked').checked = false;
+            } else {
+                alert('Please select a rating and write a review before submitting.');
+            }
+        });
+
+        // Function for processing return
+        function processReturn() {
+            alert('Return processed successfully!');
+            // Here you can add code to handle return process
+        }
+
+        function closeNotification() {
+    document.querySelector('.notification-prompt').style.display = 'none';
+}
+
+function updateCount(value) {
+    value+=1;
+    console.log(value);
+    //document.getElementById("counter").innerHTML = value;
+}
+
+
+function addToCart(item) {
+    updateCount(1);
+
+    alert(item + ' added to cart');
+    
+}
+
+function removeFromCart(item) {
+    alert(item + ' removed from cart');
+}
+    </script>
+</body>
+</html>
