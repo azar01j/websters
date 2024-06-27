@@ -27,29 +27,34 @@
                     <img src="apple.png" alt="Apples">
                     <h3>Apples</h3>
                     <p>$3.00 per lb</p>
-                    <button onclick="addToCart('Apples')">Add to Cart</button>
-                    <button onclick="removeFromCart('Apples')">Remove</button>
+                    <button onclick="addToCart('Apples')">+</button>
+                    <a id="count" ></a>
+                    <button onclick="removeFromCart('Apples')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="banana.jpg" alt="Bananas">
                     <h3>Bananas</h3>
                     <p>$1.00 per lb</p>
-                    <button onclick="addToCart('Bananas')">Add to Cart</button>
-                    <button onclick="removeFromCart('Bananas')">Remove</button>
+                    <button onclick="addToCart('Bananas')">+</button>
+                    <a id="count" ></a>
+                    <button onclick="removeFromCart('Bananas')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="carrot.jpg" alt="Carrots">
                     <h3>Carrots</h3>
                     <p>$2.00 per lb</p>
-                    <button onclick="addToCart('Carrots')">Add to Cart</button>
-                    <button onclick="removeFromCart('Carrots')">Remove</button>
+                    <button onclick="addToCart('Carrots')">+</button>
+                    <a id="count" ></a>
+                    <button onclick="removeFromCart('Carrots')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="milk.png" alt="Milk">
                     <h3>Milk</h3>
                     <p>$4.00 per gallon</p>
-                    <button onclick="addToCart('Milk')">Add to Cart</button>
-                    <button onclick="removeFromCart('Milk')">Remove</button>
+                    
+                    <button onclick="addToCart('Milk')">+</button>
+                    <a id="count" ></a>
+                    <button onclick="removeFromCart('Milk')">-</button>
                 </div>
             </div>
         </div>
@@ -82,6 +87,10 @@
 
     <script>
         // JavaScript for handling review submission
+        
+        var val_ = document.getElementById('count');
+        var value = val_.textContent;
+        val_.textContent = 0;
         document.getElementById('reviewForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const rating = document.querySelector('input[name="rating"]:checked');
@@ -110,23 +119,48 @@
     document.querySelector('.notification-prompt').style.display = 'none';
 }
 
-function updateCount(value) {
-    value+=1;
-    console.log(value);
-    //document.getElementById("counter").innerHTML = value;
-}
 
 
 function addToCart(item) {
-    updateCount(1);
+    //console.log(val_.textContent);
+
+    updateCount(val_.textContent);
+
 
     alert(item + ' added to cart');
     
 }
 
+
+
+function updateCount(value) {
+    var value=Number(value)+1;
+    //console.log(value);
+    var val_ = document.getElementById('count');
+    var value_ = val_.textContent;
+    val_.textContent = value;
+    //console.log(value);
+    //document.getElementById("counter").innerHTML = value;
+}
+
+function RemoveCount(value) {
+    var value=Number(value)-1;
+    //console.log(value);
+    var val_ = document.getElementById('count');
+    var value_ = val_.textContent;
+    val_.textContent = value;
+    //console.log(value);
+    //document.getElementById("counter").innerHTML = value;
+}
+
+
+
+
 function removeFromCart(item) {
     alert(item + ' removed from cart');
+    RemoveCount(val_.textContent);
 }
+
     </script>
 </body>
 </html>
