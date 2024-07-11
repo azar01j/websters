@@ -4,7 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fresh Mart - Websters Grocery Delivery</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .store-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #4CAF50;
+            color: white;
+        }
+        .header img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            background: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+        }
+        .navbar ul li {
+            margin: 0;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 15px 20px;
+            display: block;
+        }
+        .navbar ul li a:hover {
+            background: #ddd;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .product-item {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            flex: 1 1 calc(25% - 20px);
+            text-align: center;
+        }
+        .product-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .product-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product-item p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .product-item button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        .product-item button:hover {
+            background: #45a049;
+        }
+        .review-container {
+            padding: 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #ccc;
+        }
+        .review-container h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+        .review-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .review-container .stars {
+            display: flex;
+            gap: 5px;
+        }
+        .review-container .stars input {
+            display: none;
+        }
+        .review-container .stars label {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: url('star.png') no-repeat center center;
+            background-size: cover;
+            cursor: pointer;
+        }
+        .review-container .stars input:checked ~ label,
+        .review-container .stars input:checked + label ~ label {
+            background: url('star-filled.png') no-repeat center center;
+            background-size: cover;
+        }
+        .review-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .review-container button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .review-container button:hover {
+            background: #45a049;
+        }
+        .return-button {
+            display: block;
+            margin: 20px auto;
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .return-button:hover {
+            background: #d32f2f;
+        }
+        .notification-prompt {
+            padding: 20px;
+            background: #ffeb3b;
+            text-align: center;
+            position: relative;
+        }
+        .notification-prompt button {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .notification-prompt button:hover {
+            background: #d32f2f;
+        }
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cart-icon:hover {
+            background: #45a049;
+        }
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            z-index: 1000;
+        }
+        .cart-modal-header {
+            padding: 20px;
+            background: #4CAF50;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .cart-modal-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-modal-footer {
+            padding: 20px;
+            text-align: right;
+            border-top: 1px solid #ccc;
+        }
+        .cart-modal-footer button {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cart-modal-footer button:hover {
+            background: #d32f2f;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
     <div class="store-container">
@@ -16,7 +273,7 @@
         <nav class="navbar">
             <ul>
                 <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="account-info.html">My Account</a></li>
                 <li><a href="#">Cart</a></li>
             </ul>
         </nav>
@@ -27,52 +284,39 @@
                     <img src="apple.png" alt="Apples">
                     <h3>Apples</h3>
                     <p>$3.00 per lb</p>
-                    <button onclick="addToCart('Apples')">Add to Cart</button>
-                    <button onclick="removeFromCart('Apples')">Remove</button>
+                    <button onclick="addToCart('Apples')">+</button>
+                    <a id="count"></a>
+                    <button onclick="removeFromCart('Apples')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="banana.jpg" alt="Bananas">
                     <h3>Bananas</h3>
                     <p>$1.00 per lb</p>
-                    <button onclick="addToCart('Bananas')">Add to Cart</button>
-                    <button onclick="removeFromCart('Bananas')">Remove</button>
+                    <button onclick="addToCart('Bananas')">+</button>
+                    <a id="count"></a>
+                    <button onclick="removeFromCart('Bananas')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="carrot.jpg" alt="Carrots">
                     <h3>Carrots</h3>
                     <p>$2.00 per lb</p>
-                    <button onclick="addToCart('Carrots')">Add to Cart</button>
-                    <button onclick="removeFromCart('Carrots')">Remove</button>
+                    <button onclick="addToCart('Carrots')">+</button>
+                    <a id="count"></a>
+                    <button onclick="removeFromCart('Carrots')">-</button>
                 </div>
                 <div class="product-item">
                     <img src="milk.png" alt="Milk">
                     <h3>Milk</h3>
                     <p>$4.00 per gallon</p>
-                    <button onclick="addToCart('Milk')">Add to Cart</button>
-                    <button onclick="removeFromCart('Milk')">Remove</button>
+                    <button onclick="addToCart('Milk')">+</button>
+                    <a id="count"></a>
+                    <button onclick="removeFromCart('Milk')">-</button>
                 </div>
             </div>
         </div>
 
-        <!-- Review Section -->
-        <div class="review-container">
-            <h2>Leave a Review</h2>
-            <form id="reviewForm">
-                <div class="stars">
-                    <input type="radio" name="rating" id="star5" value="5"><label for="star5"></label>
-                    <input type="radio" name="rating" id="star4" value="4"><label for="star4"></label>
-                    <input type="radio" name="rating" id="star3" value="3"><label for="star3"></label>
-                    <input type="radio" name="rating" id="star2" value="2"><label for="star2"></label>
-                    <input type="radio" name="rating" id="star1" value="1"><label for="star1"></label>
-                </div>
-                <textarea name="review" id="reviewText" rows="4" placeholder="Write your review here..."></textarea>
-                <br>
-                <button type="submit">Submit Review</button>
-            </form>
-        </div>
-
         <!-- Return Button -->
-        <button class="return-button" onclick="processReturn()">Process Return</button>
+       
 
         <div class="notification-prompt">
             <p>New offers and discounts available!</p>
@@ -80,8 +324,88 @@
         </div>
     </div>
 
+    <!-- Cart Icon -->
+    <button class="cart-icon" onclick="openCart()">
+        🛒
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-header">
+            <h2>Your Cart</h2>
+        </div>
+        <div class="cart-modal-body" id="cartItems">
+            <p>No items in the cart.</p>
+        </div>
+        <div class="cart-modal-footer">
+            <button onclick="closeCart()">Close</button>
+            <button class="proceed-button" onclick="proceedbutton()">Proceed - Payment</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
     <script>
-        // JavaScript for handling review submission
+        var cart = {};
+        var cartModal = document.getElementById('cartModal');
+        var overlay = document.getElementById('overlay');
+        var cartItems = document.getElementById('cartItems');
+
+        function openCart() {
+            updateCartItems();
+            cartModal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closeCart() {
+            cartModal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        function addToCart(item) {
+            if (cart[item]) {
+                cart[item]++;
+            } else {
+                cart[item] = 1;
+            }
+            updateCartCounter();
+            alert(item + ' added to cart');
+        }
+
+        function removeFromCart(item) {
+            if (cart[item]) {
+                cart[item]--;
+                if (cart[item] === 0) {
+                    delete cart[item];
+                }
+            }
+            updateCartCounter();
+            alert(item + ' removed from cart');
+        }
+
+        function updateCartCounter() {
+            var counter = 0;
+            for (var item in cart) {
+                counter += cart[item];
+            }
+            document.getElementById('count').textContent = counter;
+        }
+
+        function updateCartItems() {
+            cartItems.innerHTML = '';
+            if (Object.keys(cart).length === 0) {
+                cartItems.innerHTML = '<p>No items in the cart.</p>';
+            } else {
+                for (var item in cart) {
+                    var cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `<span>${item}</span><span>x ${cart[item]}</span>`;
+                    cartItems.appendChild(cartItem);
+                }
+            }
+        }
+
         document.getElementById('reviewForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const rating = document.querySelector('input[name="rating"]:checked');
@@ -89,10 +413,7 @@
 
             if (rating && reviewText) {
                 alert(`Thank you for your ${rating.value} star review!`);
-                // Here you can send the review data to your backend or perform other actions
-                // For demonstration, just alerting the review data
                 console.log(`Rating: ${rating.value}, Review: ${reviewText}`);
-                // Clear the form
                 document.getElementById('reviewText').value = '';
                 document.querySelector('input[name="rating"]:checked').checked = false;
             } else {
@@ -100,33 +421,13 @@
             }
         });
 
-        // Function for processing return
-        function processReturn() {
-            alert('Return processed successfully!');
-            // Here you can add code to handle return process
+        function proceedbutton() {
+            alert('');
         }
 
         function closeNotification() {
-    document.querySelector('.notification-prompt').style.display = 'none';
-}
-
-function updateCount(value) {
-    value+=1;
-    console.log(value);
-    //document.getElementById("counter").innerHTML = value;
-}
-
-
-function addToCart(item) {
-    updateCount(1);
-
-    alert(item + ' added to cart');
-    
-}
-
-function removeFromCart(item) {
-    alert(item + ' removed from cart');
-}
+            document.querySelector('.notification-prompt').style.display = 'none';
+        }
     </script>
 </body>
 </html>
